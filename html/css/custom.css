@@ -1,0 +1,6 @@
+/* your styles go here */
+
+tr:hover{
+    cursor: pointer;
+    background-color: #ccc;
+  }

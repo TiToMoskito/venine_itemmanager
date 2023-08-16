@@ -1,0 +1,133 @@
+<!-- Page Header-->
+<div class="bg-dash-dark-2 py-4">
+  <div class="container-fluid">
+    <h2 class="h5 mb-0">Item</h2>
+  </div>
+</div>
+<!-- Breadcrumb-->
+<div class="container-fluid py-2">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0 py-3 px-0">
+      <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit item</li>
+    </ol>
+  </nav>
+</div>
+<!-- Forms Section-->
+<section class="pt-0">
+  <div class="container-fluid">
+    <div class="row gy-4">
+      <!-- Form Elements -->
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="h4 mb-0">Edit item</h3>
+          </div>
+          <div class="card-body pt-0">
+            <form action="/edititem/<%= key %>" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+              <div class="row">
+                <label class="col-sm-3 form-label">Name / Key</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="key" type="text" disabled="" placeholder="<%= key %>"><small
+                    class="form-text">The key of the item</small>
+                </div>
+              </div>
+
+              <div class="my-4"></div>
+              <div class="row">
+                <label class="col-sm-3 form-label">Label</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="label" type="text" value="<%= item.label %>" required><small
+                    class="form-text">Enter the label of the item</small>
+                </div>
+              </div>
+
+              <div class="my-4"></div>
+              <div class="row">
+                <label class="col-sm-3 form-label">Description</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="description" type="text" value="<%= item.description %>"><small
+                    class="form-text">Set the description for this item</small>
+                </div>
+              </div>
+
+              <div class="my-4"></div>
+              <div class="row">
+                <label class="col-sm-3 form-label">Weight</label>
+                <div class="col-sm-9">
+                  <input class="form-control" name="weight" type="text" value="<%= item.weight %>"><small
+                    class="form-text">How much should this item weigh?</small>
+                </div>
+              </div>
+
+              <div class="my-4"></div>
+              <div class="row">
+                <label class="col-sm-3 form-label">Should the item be stackable &amp; closed when used?</label>
+                <div class="col-sm-9">
+                  <div class="form-check">
+                    <% if(item.stack){ %>
+                      <input class="form-check-input" name="stackCheck" id="stackCheck" type="checkbox" checked>
+                      <% } else{ %>
+                        <input class="form-check-input" name="stackCheck" id="stackCheck" type="checkbox">
+                        <% } %>
+                          <label class="form-check-label" for="stackCheck">Stack</label>
+                  </div>
+                  <div class="form-check">
+                    <% if(item.close){ %>
+                      <input class="form-check-input" name="closeCheck" id="closeCheck" type="checkbox" checked>
+                      <% } else{ %>
+                        <input class="form-check-input" name="closeCheck" id="closeCheck" type="checkbox">
+                        <% } %>
+                          <label class="form-check-label" for="closeCheck">Close</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-4"></div>
+              <div class="row">
+                <label class="col-sm-3 form-label">Animation</label>
+                <div class="col-sm-9">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input class="form-control" name="dict" type="text" value="<%= item.client?.anim?.dict %>" placeholder="dict">
+                      <small class="form-text">Set the animation dict</small>
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control" name="clip" type="text" value="<%= item.client?.anim?.clip %>" placeholder="clip">
+                      <small class="form-text">Set the animation clip</small>
+                    </div>
+                    <div class="col-md-2">
+                      <input class="form-control" name="flag" type="text" value="<%= item.client?.anim?.flag %>" placeholder="flag">
+                      <small class="form-text">Set the animation flag</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-4"></div>
+              <div class="row">
+
+                <label class="col-sm-3 form-label" for="formFile">Icon</label>
+                <div class="col-sm-9">
+                  <img height="120px" width="130px" loading="lazy" fetchpriority="auto" aria-hidden="true"
+                    draggable="false" src="<%= img %>" style="object-fit: cover; object-position: 50% 50%;"
+                    onerror="this.style.display='none'">
+                  <input class="form-control" type="file" id="image" name="image" accept="image/*" />
+                </div>
+              </div>
+
+              <div class="my-4"></div>
+              <div class="row">
+                <div class="col-sm-9 ms-auto">
+                  <a href="/" class="btn btn-secondary">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
